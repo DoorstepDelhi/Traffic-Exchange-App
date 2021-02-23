@@ -50,12 +50,9 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed('/Tabs', arguments: 0);
             },
-            leading: Icon(
-              UiIcons.bell,
-              color: Theme.of(context).focusColor.withOpacity(1),
-            ),
+            leading: UiIcons.web,
             title: Text(
-              "Notifications",
+              "My Websites",
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -74,7 +71,8 @@ class DrawerWidget extends StatelessWidget {
             trailing: Chip(
               padding: EdgeInsets.symmetric(horizontal: 5),
               backgroundColor: Colors.transparent,
-              shape: StadiumBorder(side: BorderSide(color: Theme.of(context).focusColor)),
+              shape: StadiumBorder(
+                  side: BorderSide(color: Theme.of(context).focusColor)),
               label: Text(
                 '8',
                 style: TextStyle(color: Theme.of(context).focusColor),

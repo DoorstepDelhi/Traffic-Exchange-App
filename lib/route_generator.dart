@@ -16,6 +16,7 @@ import 'package:ecommerce_app_ui_kit/src/screens/signin.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/signup.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/tabs.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce_app_ui_kit/src/screens/account.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

@@ -9,6 +9,7 @@ import 'package:ecommerce_app_ui_kit/src/screens/notifications.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/DrawerWidget.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/FilterWidget.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/ShoppingCartButtonWidget.dart';
+import 'package:ecommerce_app_ui_kit/src/screens/my_website.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -49,8 +50,8 @@ class _TabsWidgetState extends State<TabsWidget> {
       widget.selectedTab = tabItem;
       switch (tabItem) {
         case 0:
-          widget.currentTitle = 'Notifications';
-          widget.currentPage = NotificationsWidget();
+          widget.currentTitle = 'My Websites';
+          widget.currentPage = MyWebsiteWidget();
           break;
         case 1:
           widget.currentTitle = 'Account';
@@ -177,7 +178,7 @@ class _TabsWidgetState extends State<TabsWidget> {
             title: new Container(height: 0.0),
           ),
           BottomNavigationBarItem(
-            icon: Icon(UiIcons.user_1),
+            icon: Icon(Icons.web_outlined),
             title: new Container(height: 0.0),
           ),
           BottomNavigationBarItem(
