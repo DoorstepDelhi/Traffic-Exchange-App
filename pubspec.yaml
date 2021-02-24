@@ -158,6 +158,8 @@ flutter:
     - img/slider2.jpg
     - img/slider3.jpg
     - img/Vector.jpg
+    - img/Rectangle 462.png
+    - img/Rectangle 463.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

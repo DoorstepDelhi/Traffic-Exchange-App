@@ -1,3 +1,6 @@
+import 'package:ecommerce_app_ui_kit/src/screens/collaborators.dart';
+import 'package:ecommerce_app_ui_kit/src/screens/company.dart';
+import 'package:ecommerce_app_ui_kit/src/screens/surf_screen.dart';
 import 'package:flutter/material.dart';
 
 class SocialMediaWidget extends StatelessWidget {
@@ -14,7 +17,14 @@ class SocialMediaWidget extends StatelessWidget {
           width: 45,
           height: 45,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CollaboratorsWidget(),
+                ),
+              );
+            },
             child: Image.asset('img/facebook.png'),
           ),
         ),
@@ -23,7 +33,14 @@ class SocialMediaWidget extends StatelessWidget {
           width: 45,
           height: 45,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SurfScreenWidget(),
+                ),
+              );
+            },
             child: Image.asset('img/twitter.png'),
           ),
         ),
@@ -32,7 +49,14 @@ class SocialMediaWidget extends StatelessWidget {
           width: 45,
           height: 45,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CompanyWidget(),
+                ),
+              );
+            },
             child: Image.asset('img/google-plus.png'),
           ),
         ),
