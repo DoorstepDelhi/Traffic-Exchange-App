@@ -22,9 +22,7 @@ class ReviewItemWidget extends StatelessWidget {
               width: 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(100)),
-                image: DecorationImage(
-                    image: AssetImage(this.review.user.avatar),
-                    fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage(this.review.user.avatar), fit: BoxFit.cover),
               ),
             ),
             SizedBox(width: 15),
@@ -44,9 +42,10 @@ class ReviewItemWidget extends StatelessWidget {
                               overflow: TextOverflow.fade,
                               softWrap: false,
                               maxLines: 2,
-                              style: Theme.of(context).textTheme.title.merge(
-                                  TextStyle(
-                                      color: Theme.of(context).hintColor)),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .title
+                                  .merge(TextStyle(color: Theme.of(context).hintColor)),
                             ),
                             Row(
                               children: <Widget>[
@@ -69,19 +68,23 @@ class ReviewItemWidget extends StatelessWidget {
                         ),
                       ),
                       Chip(
-                        padding: EdgeInsets.symmetric(horizontal: 5.0),
+                        padding: EdgeInsets.all(0),
                         label: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text('View',
-                                style: Theme.of(context).textTheme.body2.merge(
-                                    TextStyle(
-                                        color:
-                                            Theme.of(context).primaryColor))),
+                            Text(review.rate.toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .body2
+                                    .merge(TextStyle(color: Theme.of(context).primaryColor))),
+                            Icon(
+                              Icons.star_border,
+                              color: Theme.of(context).primaryColor,
+                              size: 16,
+                            ),
                           ],
                         ),
-                        backgroundColor:
-                            Theme.of(context).accentColor.withOpacity(0.9),
+                        backgroundColor: Theme.of(context).accentColor.withOpacity(0.9),
                         shape: StadiumBorder(),
                       ),
                     ],

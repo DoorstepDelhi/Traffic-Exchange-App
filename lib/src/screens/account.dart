@@ -19,6 +19,10 @@ class _AccountWidgetState extends State<AccountWidget> {
       child: Column(
         children: <Widget>[
           Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SearchBarWidget(),
+          ),
+          Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Row(
               children: <Widget>[
@@ -59,10 +63,7 @@ class _AccountWidgetState extends State<AccountWidget> {
               color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(6),
               boxShadow: [
-                BoxShadow(
-                    color: Theme.of(context).hintColor.withOpacity(0.15),
-                    offset: Offset(0, 3),
-                    blurRadius: 10)
+                BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
               ],
             ),
             child: Row(
@@ -121,126 +122,117 @@ class _AccountWidgetState extends State<AccountWidget> {
               ],
             ),
           ),
-          // Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          //   decoration: BoxDecoration(
-          //     color: Theme.of(context).primaryColor,
-          //     borderRadius: BorderRadius.circular(6),
-          //     boxShadow: [
-          //       BoxShadow(
-          //           color: Theme.of(context).hintColor.withOpacity(0.15),
-          //           offset: Offset(0, 3),
-          //           blurRadius: 10)
-          //     ],
-          //   ),
-          //   child: ListView(
-          //     shrinkWrap: true,
-          //     primary: false,
-          //     children: <Widget>[
-          //       ListTile(
-          //         leading: Icon(UiIcons.inbox),
-          //         title: Text(
-          //           'My Orders',
-          //           style: Theme.of(context).textTheme.body2,
-          //         ),
-          //         trailing: ButtonTheme(
-          //           padding: EdgeInsets.all(0),
-          //           minWidth: 50.0,
-          //           height: 25.0,
-          //           child: FlatButton(
-          //             onPressed: () {
-          //               Navigator.of(context).pushNamed('/Orders');
-          //             },
-          //             child: Text(
-          //               "View all",
-          //               style: Theme.of(context).textTheme.body1,
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //       ListTile(
-          //         onTap: () {
-          //           Navigator.of(context).pushNamed('/Orders');
-          //         },
-          //         dense: true,
-          //         title: Text(
-          //           'Unpaid',
-          //           style: Theme.of(context).textTheme.body1,
-          //         ),
-          //         trailing: Chip(
-          //           padding: EdgeInsets.symmetric(horizontal: 10),
-          //           backgroundColor: Colors.transparent,
-          //           shape: StadiumBorder(
-          //               side: BorderSide(color: Theme.of(context).focusColor)),
-          //           label: Text(
-          //             '1',
-          //             style: TextStyle(color: Theme.of(context).focusColor),
-          //           ),
-          //         ),
-          //       ),
-          //       ListTile(
-          //         onTap: () {
-          //           Navigator.of(context).pushNamed('/Orders');
-          //         },
-          //         dense: true,
-          //         title: Text(
-          //           'To be shipped',
-          //           style: Theme.of(context).textTheme.body1,
-          //         ),
-          //         trailing: Chip(
-          //           padding: EdgeInsets.symmetric(horizontal: 10),
-          //           backgroundColor: Colors.transparent,
-          //           shape: StadiumBorder(
-          //               side: BorderSide(color: Theme.of(context).focusColor)),
-          //           label: Text(
-          //             '5',
-          //             style: TextStyle(color: Theme.of(context).focusColor),
-          //           ),
-          //         ),
-          //       ),
-          //       ListTile(
-          //         onTap: () {
-          //           Navigator.of(context).pushNamed('/Orders');
-          //         },
-          //         dense: true,
-          //         title: Text(
-          //           'Shipped',
-          //           style: Theme.of(context).textTheme.body1,
-          //         ),
-          //         trailing: Chip(
-          //           padding: EdgeInsets.symmetric(horizontal: 10),
-          //           backgroundColor: Colors.transparent,
-          //           shape: StadiumBorder(
-          //               side: BorderSide(color: Theme.of(context).focusColor)),
-          //           label: Text(
-          //             '3',
-          //             style: TextStyle(color: Theme.of(context).focusColor),
-          //           ),
-          //         ),
-          //       ),
-          //       ListTile(
-          //         onTap: () {
-          //           Navigator.of(context).pushNamed('/Orders');
-          //         },
-          //         dense: true,
-          //         title: Text(
-          //           'In dispute',
-          //           style: Theme.of(context).textTheme.body1,
-          //         ),
-          //       )
-          //     ],
-          //   ),
-          // ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(6),
               boxShadow: [
-                BoxShadow(
-                    color: Theme.of(context).hintColor.withOpacity(0.15),
-                    offset: Offset(0, 3),
-                    blurRadius: 10)
+                BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
+              ],
+            ),
+            child: ListView(
+              shrinkWrap: true,
+              primary: false,
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(UiIcons.inbox),
+                  title: Text(
+                    'My Orders',
+                    style: Theme.of(context).textTheme.body2,
+                  ),
+                  trailing: ButtonTheme(
+                    padding: EdgeInsets.all(0),
+                    minWidth: 50.0,
+                    height: 25.0,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/Orders');
+                      },
+                      child: Text(
+                        "View all",
+                        style: Theme.of(context).textTheme.body1,
+                      ),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/Orders');
+                  },
+                  dense: true,
+                  title: Text(
+                    'Unpaid',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                  trailing: Chip(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    backgroundColor: Colors.transparent,
+                    shape: StadiumBorder(side: BorderSide(color: Theme.of(context).focusColor)),
+                    label: Text(
+                      '1',
+                      style: TextStyle(color: Theme.of(context).focusColor),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/Orders');
+                  },
+                  dense: true,
+                  title: Text(
+                    'To be shipped',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                  trailing: Chip(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    backgroundColor: Colors.transparent,
+                    shape: StadiumBorder(side: BorderSide(color: Theme.of(context).focusColor)),
+                    label: Text(
+                      '5',
+                      style: TextStyle(color: Theme.of(context).focusColor),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/Orders');
+                  },
+                  dense: true,
+                  title: Text(
+                    'Shipped',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                  trailing: Chip(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    backgroundColor: Colors.transparent,
+                    shape: StadiumBorder(side: BorderSide(color: Theme.of(context).focusColor)),
+                    label: Text(
+                      '3',
+                      style: TextStyle(color: Theme.of(context).focusColor),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/Orders');
+                  },
+                  dense: true,
+                  title: Text(
+                    'In dispute',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                )
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
               ],
             ),
             child: ListView(
@@ -293,6 +285,18 @@ class _AccountWidgetState extends State<AccountWidget> {
                   onTap: () {},
                   dense: true,
                   title: Text(
+                    'Gender',
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                  trailing: Text(
+                    _user.gender,
+                    style: TextStyle(color: Theme.of(context).focusColor),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {},
+                  dense: true,
+                  title: Text(
                     'Birth Date',
                     style: Theme.of(context).textTheme.body1,
                   ),
@@ -310,10 +314,7 @@ class _AccountWidgetState extends State<AccountWidget> {
               color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(6),
               boxShadow: [
-                BoxShadow(
-                    color: Theme.of(context).hintColor.withOpacity(0.15),
-                    offset: Offset(0, 3),
-                    blurRadius: 10)
+                BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
               ],
             ),
             child: ListView(

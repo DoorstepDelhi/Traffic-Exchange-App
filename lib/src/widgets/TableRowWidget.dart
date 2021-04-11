@@ -60,6 +60,7 @@ Table row(BuildContext context, {String col1}) {
                 width: 70.0,
                 height: 20.0,
                 child: MaterialButton(
+                  onPressed: () {},
                   child: Text(
                     'STATUS',
                     style: TextStyle(color: Colors.white, fontSize: 10.0),

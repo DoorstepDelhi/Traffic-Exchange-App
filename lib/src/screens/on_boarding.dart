@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app_ui_kit/config/app_config.dart' as config;
 import 'package:ecommerce_app_ui_kit/src/models/on_boarding.dart';
-import 'package:ecommerce_app_ui_kit/src/screens/collaborators.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,13 +29,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             Padding(
               padding: const EdgeInsets.only(right: 20, top: 50),
               child: FlatButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => CollaboratorsWidget(),
-                    ),
-                  );
-                },
+                onPressed: () {},
                 child: Text(
                   'Skip',
                   style: Theme.of(context).textTheme.button,
@@ -89,16 +82,14 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                   return Container(
                     width: 25.0,
                     height: 3.0,
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(
                           Radius.circular(8),
                         ),
-                        color:
-                            _current == _onBoardingList.list.indexOf(boarding)
-                                ? Theme.of(context).hintColor.withOpacity(0.8)
-                                : Theme.of(context).hintColor.withOpacity(0.2)),
+                        color: _current == _onBoardingList.list.indexOf(boarding)
+                            ? Theme.of(context).hintColor.withOpacity(0.8)
+                            : Theme.of(context).hintColor.withOpacity(0.2)),
                   );
                 }).toList(),
               ),

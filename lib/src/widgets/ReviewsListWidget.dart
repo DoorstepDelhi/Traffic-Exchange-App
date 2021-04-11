@@ -1,5 +1,4 @@
 import 'package:ecommerce_app_ui_kit/src/models/review.dart';
-import 'package:ecommerce_app_ui_kit/src/models/user.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/ReviewItemWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +15,7 @@ class ReviewsListWidget extends StatelessWidget {
     return ListView.separated(
       padding: EdgeInsets.symmetric(horizontal: 20),
       itemBuilder: (context, index) {
-        return ReviewItemWidget(
-            review: _reviewsList.reviewsList.elementAt(index));
+        return ReviewItemWidget(review: _reviewsList.reviewsList.elementAt(index));
       },
       separatorBuilder: (context, index) {
         return Divider(

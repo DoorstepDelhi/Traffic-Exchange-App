@@ -1,14 +1,21 @@
 import 'package:ecommerce_app_ui_kit/config/app_config.dart' as config;
+import 'package:ecommerce_app_ui_kit/provider/getit.dart';
 import 'package:ecommerce_app_ui_kit/route_generator.dart';
+import 'package:ecommerce_app_ui_kit/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: getIt<NavigationService>().navigatorKey,
       title: 'Restaurant Flutter UI',
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
@@ -23,16 +30,40 @@ class MyApp extends StatelessWidget {
         focusColor: config.Colors().accentDarkColor(1),
         textTheme: TextTheme(
           button: TextStyle(color: Color(0xFF252525)),
-          headline: TextStyle(fontSize: 20.0, color: config.Colors().secondDarkColor(1)),
-          display1: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: config.Colors().secondDarkColor(1)),
-          display2: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600, color: config.Colors().secondDarkColor(1)),
-          display3: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700, color: config.Colors().mainDarkColor(1)),
-          display4: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w300, color: config.Colors().secondDarkColor(1)),
-          subhead: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500, color: config.Colors().secondDarkColor(1)),
-          title: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: config.Colors().mainDarkColor(1)),
-          body1: TextStyle(fontSize: 12.0, color: config.Colors().secondDarkColor(1)),
-          body2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: config.Colors().secondDarkColor(1)),
-          caption: TextStyle(fontSize: 12.0, color: config.Colors().secondDarkColor(0.7)),
+          headline: TextStyle(
+              fontSize: 20.0, color: config.Colors().secondDarkColor(1)),
+          display1: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().secondDarkColor(1)),
+          display2: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().secondDarkColor(1)),
+          display3: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w700,
+              color: config.Colors().mainDarkColor(1)),
+          display4: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w300,
+              color: config.Colors().secondDarkColor(1)),
+          subhead: TextStyle(
+              fontSize: 15.0,
+              fontWeight: FontWeight.w500,
+              color: config.Colors().secondDarkColor(1)),
+          title: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().mainDarkColor(1)),
+          body1: TextStyle(
+              fontSize: 12.0, color: config.Colors().secondDarkColor(1)),
+          body2: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().secondDarkColor(1)),
+          caption: TextStyle(
+              fontSize: 12.0, color: config.Colors().secondDarkColor(0.7)),
         ),
       ),
       theme: ThemeData(
@@ -44,16 +75,40 @@ class MyApp extends StatelessWidget {
         hintColor: config.Colors().secondColor(1),
         textTheme: TextTheme(
           button: TextStyle(color: Colors.white),
-          headline: TextStyle(fontSize: 20.0, color: config.Colors().secondColor(1)),
-          display1: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: config.Colors().secondColor(1)),
-          display2: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600, color: config.Colors().secondColor(1)),
-          display3: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700, color: config.Colors().mainColor(1)),
-          display4: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w300, color: config.Colors().secondColor(1)),
-          subhead: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w500, color: config.Colors().secondColor(1)),
-          title: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600, color: config.Colors().mainColor(1)),
-          body1: TextStyle(fontSize: 12.0, color: config.Colors().secondColor(1)),
-          body2: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: config.Colors().secondColor(1)),
-          caption: TextStyle(fontSize: 12.0, color: config.Colors().secondColor(0.6)),
+          headline:
+              TextStyle(fontSize: 20.0, color: config.Colors().secondColor(1)),
+          display1: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().secondColor(1)),
+          display2: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().secondColor(1)),
+          display3: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w700,
+              color: config.Colors().mainColor(1)),
+          display4: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.w300,
+              color: config.Colors().secondColor(1)),
+          subhead: TextStyle(
+              fontSize: 15.0,
+              fontWeight: FontWeight.w500,
+              color: config.Colors().secondColor(1)),
+          title: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().mainColor(1)),
+          body1:
+              TextStyle(fontSize: 12.0, color: config.Colors().secondColor(1)),
+          body2: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.w600,
+              color: config.Colors().secondColor(1)),
+          caption: TextStyle(
+              fontSize: 12.0, color: config.Colors().secondColor(0.6)),
         ),
       ),
     );
