@@ -39,13 +39,14 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
               ),
             ),
             CarouselSlider(
-              height: 500.0,
-              viewportFraction: 1.0,
-              onPageChanged: (index) {
-                setState(() {
-                  _current = index;
-                });
-              },
+              options: CarouselOptions(
+                  height: 500.0,
+                  viewportFraction: 1.0,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  }),
               items: _onBoardingList.list.map((OnBoarding boarding) {
                 return Builder(
                   builder: (BuildContext context) {
@@ -82,14 +83,16 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                   return Container(
                     width: 25.0,
                     height: 3.0,
-                    margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(
                           Radius.circular(8),
                         ),
-                        color: _current == _onBoardingList.list.indexOf(boarding)
-                            ? Theme.of(context).hintColor.withOpacity(0.8)
-                            : Theme.of(context).hintColor.withOpacity(0.2)),
+                        color:
+                            _current == _onBoardingList.list.indexOf(boarding)
+                                ? Theme.of(context).hintColor.withOpacity(0.8)
+                                : Theme.of(context).hintColor.withOpacity(0.2)),
                   );
                 }).toList(),
               ),

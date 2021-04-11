@@ -19,27 +19,33 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
 //      fit: StackFit.expand,
       children: <Widget>[
         CarouselSlider(
-          autoPlay: true,
-          autoPlayInterval: Duration(seconds: 5),
-          height: 240,
-          viewportFraction: 1.0,
-          onPageChanged: (index) {
-            setState(() {
-              _current = index;
-            });
-          },
+          options: CarouselOptions(
+            autoPlay: true,
+            autoPlayInterval: Duration(seconds: 5),
+            height: 240,
+            viewportFraction: 1.0,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _current = index;
+              });
+            },
+          ),
           items: _sliderList.list.map((prefix0.Slider slide) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                   height: 200,
                   decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage(slide.image), fit: BoxFit.cover),
+                    image: DecorationImage(
+                        image: AssetImage(slide.image), fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(6),
                     boxShadow: [
                       BoxShadow(
-                          color: Theme.of(context).hintColor.withOpacity(0.2), offset: Offset(0, 4), blurRadius: 9)
+                          color: Theme.of(context).hintColor.withOpacity(0.2),
+                          offset: Offset(0, 4),
+                          blurRadius: 9)
                     ],
                   ),
                   child: Container(
@@ -55,7 +61,10 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
                         children: <Widget>[
                           Text(
                             slide.description,
-                            style: Theme.of(context).textTheme.title.merge(TextStyle(height: 0.8)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .title
+                                .merge(TextStyle(height: 0.8)),
                             textAlign: TextAlign.right,
                             overflow: TextOverflow.fade,
                             maxLines: 3,
@@ -70,7 +79,8 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
                             child: Text(
                               slide.button,
                               textAlign: TextAlign.start,
-                              style: TextStyle(color: Theme.of(context).primaryColor),
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor),
                             ),
                           ),
                         ],
