@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-Website websiteFromJson(String str) => Website.fromJson(json.decode(str));
+Website websiteFromJson(str) => Website.fromJson(str);
 
 String websiteToJson(Website data) => json.encode(data.toJson());
 
@@ -35,7 +35,7 @@ class Website {
   bool clicks;
   bool reloadPage;
 
-  factory Website.fromJson(Map<String, dynamic> json) => Website(
+  factory Website.fromJson(json) => Website(
         name: json["name"],
         url: json["url"],
         timer: json["timer"],

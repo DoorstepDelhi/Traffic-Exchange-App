@@ -1,16 +1,19 @@
 import 'package:ecommerce_app_ui_kit/config/ui_icons.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/account.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/chat.dart';
+import 'package:ecommerce_app_ui_kit/src/screens/collaborators.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/favorites.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/home.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/home_traffic.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/messages.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/notifications.dart';
+import 'package:ecommerce_app_ui_kit/src/screens/surf_screen.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/DrawerWidget.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/FilterWidget.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/ShoppingCartButtonWidget.dart';
 import 'package:ecommerce_app_ui_kit/src/screens/my_website.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // ignore: must_be_immutable
 class TabsWidget extends StatefulWidget {
@@ -51,28 +54,23 @@ class _TabsWidgetState extends State<TabsWidget> {
       switch (tabItem) {
         case 0:
           widget.currentTitle = 'My Websites';
-          widget.currentPage = MyWebsiteWidget();
+          widget.currentPage = SurfScreenWidget();
           break;
         case 1:
-          widget.currentTitle = 'Account';
-          widget.currentPage = AccountWidget();
+          widget.currentTitle = 'My Websites';
+          widget.currentPage = MyWebsiteWidget();
           break;
         case 2:
           widget.currentTitle = 'Home';
           widget.currentPage = HomeTrafficWidget();
           break;
         case 3:
-          widget.currentTitle = 'Messages';
-          widget.currentPage = MessagesWidget();
+          widget.currentTitle = 'Collaborators';
+          widget.currentPage = CollaboratorsWidget();
           break;
         case 4:
-          widget.currentTitle = 'Favorites';
-          widget.currentPage = FavoritesWidget();
-          break;
-        case 5:
-          widget.selectedTab = 3;
-          widget.currentTitle = 'Chat';
-          widget.currentPage = ChatWidget();
+          widget.currentTitle = 'Account';
+          widget.currentPage = AccountWidget();
           break;
       }
     });
@@ -111,7 +109,7 @@ class _TabsWidgetState extends State<TabsWidget> {
               child: InkWell(
                 borderRadius: BorderRadius.circular(300),
                 onTap: () {
-                  Navigator.of(context).pushNamed('/Tabs', arguments: 1);
+                  Navigator.of(context).pushNamed('/Tabs', arguments: 4);
                 },
                 child: CircleAvatar(
                   backgroundImage: AssetImage('img/user2.jpg'),
@@ -174,11 +172,11 @@ class _TabsWidgetState extends State<TabsWidget> {
         // this will be set when a new tab is tapped
         items: [
           BottomNavigationBarItem(
-            icon: Icon(UiIcons.bell),
+            icon: FaIcon(FontAwesomeIcons.building),
             title: new Container(height: 0.0),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.web_outlined),
+            icon: FaIcon(FontAwesomeIcons.globe),
             title: new Container(height: 0.0),
           ),
           BottomNavigationBarItem(
@@ -206,11 +204,11 @@ class _TabsWidgetState extends State<TabsWidget> {
                     color: Theme.of(context).primaryColor),
               )),
           BottomNavigationBarItem(
-            icon: new Icon(UiIcons.chat),
+            icon: FaIcon(FontAwesomeIcons.handshake),
             title: new Container(height: 0.0),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(UiIcons.heart),
+            icon: FaIcon(FontAwesomeIcons.user),
             title: new Container(height: 0.0),
           ),
         ],

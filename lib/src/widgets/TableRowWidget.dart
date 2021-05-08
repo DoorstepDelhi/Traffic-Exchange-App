@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_ui_kit/src/models/website.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/GeneralButton.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,22 @@ TableRow headRow() {
   );
 }
 
-Table row(BuildContext context, {String col1}) {
+TableRow secondHeadRow() {
+  return TableRow(
+    decoration: BoxDecoration(
+      color: Color(0xffA6CEE3),
+    ),
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Text('Select Action ▼'),
+      ),
+    ],
+  );
+}
+
+Table row(BuildContext context,
+    {Website content, bool checkState, Function checkChange}) {
   return Table(
     defaultVerticalAlignment: TableCellVerticalAlignment.middle,
     columnWidths: columnsWidth,
@@ -40,16 +56,19 @@ Table row(BuildContext context, {String col1}) {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Checkbox(
-              value: false,
-              onChanged: null,
-            ),
+            child: StatefulBuilder(
+                builder: (BuildContext context, StateSetter setState) {
+              return Checkbox(
+                value: checkState,
+                onChanged: checkChange,
+              );
+            }),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(col1),
+            child: Text(content.name),
           ),
-          Text('0'),
+          Text(content.totalHits.toString()),
           Row(
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -81,14 +100,14 @@ Table row(BuildContext context, {String col1}) {
   );
 }
 
-Widget expandRow(BuildContext context) {
+Widget expandRow(BuildContext context, {Website content}) {
   return Padding(
     padding: const EdgeInsets.only(left: 12.0),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'www.google.com/',
+          content.url,
           style: Theme.of(context).textTheme.bodyText2,
         ),
         SizedBox(height: 5.0),
@@ -106,7 +125,7 @@ Widget expandRow(BuildContext context) {
                           text: "Daily Limit: ",
                           style: Theme.of(context).textTheme.bodyText2),
                       TextSpan(
-                        text: "5000/day",
+                        text: "${content.dailyHits}/day",
                         style: TextStyle(
                           color: Theme.of(context).accentColor,
                         ),
@@ -119,7 +138,7 @@ Widget expandRow(BuildContext context) {
                           text: "Total Limit: ",
                           style: Theme.of(context).textTheme.bodyText2),
                       TextSpan(
-                        text: "∞",
+                        text: content.totalHits.toString(),
                         style: TextStyle(
                           color: Theme.of(context).accentColor,
                         ),
@@ -133,7 +152,7 @@ Widget expandRow(BuildContext context) {
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
                       TextSpan(
-                        text: "Disabled",
+                        text: content.highQuality ? "Enabled" : "Disabled",
                         style: TextStyle(
                           color: Theme.of(context).accentColor,
                         ),

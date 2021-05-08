@@ -6,6 +6,9 @@ import 'package:ecommerce_app_ui_kit/src/models/website.dart';
 import 'package:flutter/material.dart';
 
 class WebsiteViewModel extends BaseModel {
+  List<Website> initData = [];
+  List<bool> checkedWebsite = [];
+
   TextEditingController nameController = TextEditingController();
   TextEditingController urlController = TextEditingController();
   TextEditingController timerController = TextEditingController();
@@ -36,7 +39,27 @@ class WebsiteViewModel extends BaseModel {
       setState(ViewState.Idle);
       print('success');
       navigationService.navigateTo('/Tabs',
-          arguments: 0, withreplacement: true);
+          arguments: 1, withreplacement: true);
+    } else {
+      setState(ViewState.Idle);
+      print(response.data);
+      print(response.errorMessage);
+      AppConstant.showFailToast(context, response.errorMessage);
+    }
+  }
+
+  void getWebsites(BuildContext context) async {
+    setState(ViewState.Busy);
+    final response =
+        await _apiService.getRequest(endpoint: '/webtraffic/websites/');
+    if (!response.error) {
+      setState(ViewState.Idle);
+      print(response.data);
+      for (var res in response.data) {
+        final web = websiteFromJson(res);
+        initData.add(web);
+        checkedWebsite.add(false);
+      }
     } else {
       setState(ViewState.Idle);
       print(response.data);
