@@ -1,4 +1,6 @@
+import 'package:ecommerce_app_ui_kit/services/navigation_service.dart';
 import 'package:ecommerce_app_ui_kit/src/models/notification.dart' as model;
+import 'package:ecommerce_app_ui_kit/src/screens/add_new_website.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/EmptyNotificationsWidget.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/NotificationItemWidget.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/GeneralButton.dart';
@@ -23,7 +25,15 @@ class _MyWebsiteWidgetState extends State<MyWebsiteWidget> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 25.0),
-              child: GeneralButton(),
+              child: GeneralButton(
+                text: 'ADD NEW WEBSITE',
+                onClick: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddWebsiteWidget()));
+                },
+              ),
             ),
             Table(
               defaultVerticalAlignment: TableCellVerticalAlignment.middle,

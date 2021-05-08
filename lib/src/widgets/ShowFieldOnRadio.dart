@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class ShowFieldOnRadio extends StatelessWidget {
   final String hint;
-  ShowFieldOnRadio({this.hint});
+  final Function onChange;
+  ShowFieldOnRadio({this.hint, this.onChange});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,9 @@ class ShowFieldOnRadio extends StatelessWidget {
           width: 200.0,
           color: Colors.white,
           child: TextFormField(
+            onChanged: (value) {
+              onChange(value);
+            },
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(
               border: InputBorder.none,
