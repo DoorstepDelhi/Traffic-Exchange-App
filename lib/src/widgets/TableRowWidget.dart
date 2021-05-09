@@ -141,7 +141,7 @@ DataTable rowData(BuildContext context,
   ]);
 }
 
-Widget expandRow(BuildContext context, {Website content}) {
+Widget expandRow(BuildContext context, model, {Website content}) {
   return Container(
     // padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
     height: 150,
@@ -249,7 +249,8 @@ Widget expandRow(BuildContext context, {Website content}) {
                           constraints: BoxConstraints(),
                           icon: Icon(Icons.close),
                           onPressed: () {
-                            print('yyyy');
+                            print('del');
+                            model.deleteWebsite(context, content.id);
                           },
                         ),
                       ],

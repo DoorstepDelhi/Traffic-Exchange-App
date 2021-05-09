@@ -10,6 +10,7 @@ String websiteToJson(Website data) => json.encode(data.toJson());
 
 class Website {
   Website({
+    this.id,
     this.name,
     this.url,
     this.timer = 0,
@@ -23,6 +24,7 @@ class Website {
     this.reloadPage = true,
   });
 
+  String id;
   String name;
   String url;
   int timer;
@@ -36,6 +38,7 @@ class Website {
   bool reloadPage;
 
   factory Website.fromJson(json) => Website(
+        id: json["id"].toString(),
         name: json["name"],
         url: json["url"],
         timer: json["timer"],

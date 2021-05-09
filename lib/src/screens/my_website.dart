@@ -108,8 +108,11 @@ class _MyWebsiteWidgetState extends State<MyWebsiteWidget> {
                           if (e) {
                             showModalBottomSheet(
                               context: context,
-                              builder: (context) =>
-                                  expandRow(context, content: web),
+                              builder: (context) => expandRow(
+                                context,
+                                model,
+                                content: web,
+                              ),
                               elevation: 50,
                             );
                           }
@@ -137,7 +140,7 @@ class _MyWebsiteWidgetState extends State<MyWebsiteWidget> {
                                   child: MaterialButton(
                                     onPressed: () {},
                                     child: Text(
-                                      'STATUS',
+                                      "STATUS",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 10.0,
@@ -169,8 +172,7 @@ class _MyWebsiteWidgetState extends State<MyWebsiteWidget> {
               ),
               GestureDetector(
                 onTap: () {
-                  print(model.checkedWebsite.length);
-                  print('x');
+                  model.deleteSelectedWebsite(context);
                 },
                 child: Container(
                   alignment: Alignment.bottomLeft,
@@ -184,6 +186,7 @@ class _MyWebsiteWidgetState extends State<MyWebsiteWidget> {
               GestureDetector(
                 onTap: () {
                   print('y');
+                  model.pauseSelectedWebsite(context);
                 },
                 child: Container(
                   alignment: Alignment.bottomLeft,
