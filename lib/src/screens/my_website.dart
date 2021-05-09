@@ -1,3 +1,4 @@
+// import 'package:ecommerce_app_ui_kit/config/app_config.dart' as app;
 import 'package:ecommerce_app_ui_kit/provider/base_view.dart';
 import 'package:ecommerce_app_ui_kit/services/navigation_service.dart';
 import 'package:ecommerce_app_ui_kit/src/models/notification.dart' as model;
@@ -40,34 +41,135 @@ class _MyWebsiteWidgetState extends State<MyWebsiteWidget> {
                   },
                 ),
               ),
-              Table(
-                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                columnWidths: columnsWidth,
-                children: [
-                  headRow(),
-                ],
-              ),
-              for (int i = 0; i < model.initData.length; i++)
-                // ExpandablePanel(
-                row(context,
-                    content: model.initData[i],
-                    checkState: model.checkedWebsite[i], checkChange: (val) {
-                  setState(() {
-                    model.checkedWebsite[i] = val;
-                  });
-                }),
+              // Table(
+              //   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+              //   columnWidths: columnsWidth,
+              //   children: [
+              //     headRow(),
+              //   ],
+              // ),
+              // for (int i = 0; i < model.initData.length; i++)
+              //   // ExpandablePanel(
+              //   row(
+              //     context,
+              //     content: model.initData[i],
+              //     checkState: model.checkedWebsite[i],
+              //     checkChange: (val) {
+              //       setState(() {
+              //         model.checkedWebsite[i] = val;
+              //       });
+              //     },
+              //   ),
               //   hasIcon: false,
               //   expanded: expandRow(context, content: model.initData[i]),
               // ),
+              DataTable(
+                showCheckboxColumn: true,
+                columnSpacing: 40.0,
+                headingRowHeight: 42.0,
+                headingRowColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                  return Theme.of(context).colorScheme.primary.withOpacity(0.4);
+                }),
+                columns: [
+                  DataColumn(
+                    label: Text(
+                      "Name ▼",
+                      style: TextStyle(
+                        fontSize: 10.0,
+                      ),
+                    ),
+                    numeric: false,
+                  ),
+                  DataColumn(
+                    label: Text(
+                      "Hits ▼",
+                      style: TextStyle(
+                        fontSize: 10.0,
+                      ),
+                    ),
+                    numeric: false,
+                  ),
+                  DataColumn(
+                    label: Text(
+                      "Status ▼",
+                      style: TextStyle(
+                        fontSize: 10.0,
+                      ),
+                    ),
+                    numeric: true,
+                  ),
+                ],
+                rows: model.initData
+                    .map(
+                      (web) => DataRow(
+                        selected: model.checkedWebsite.contains(web),
+                        onSelectChanged: (e) {
+                          if (e) {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (context) =>
+                                  expandRow(context, content: web),
+                              elevation: 50,
+                            );
+                          }
+                          setState(() {
+                            if (e) {
+                              model.checkedWebsite.add(web);
+                            } else {
+                              model.checkedWebsite.remove(web);
+                            }
+                          });
+                        },
+                        cells: [
+                          DataCell(Text(web.name)),
+                          DataCell(Text(web.totalHits.toString())),
+                          DataCell(
+                            Row(
+                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      color: Theme.of(context).accentColor),
+                                  width: 70.0,
+                                  height: 20.0,
+                                  child: MaterialButton(
+                                    onPressed: () {},
+                                    child: Text(
+                                      'STATUS',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.info_outline,
+                                      color: Colors.black),
+                                  constraints: BoxConstraints(),
+                                  onPressed: null,
+                                  padding: EdgeInsets.zero,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                    .toList(),
+              ),
               Table(
                 defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                 columnWidths: columnsWidth,
                 children: [
-                  secondHeadRow(),
+                  secondHeadRow(context),
                 ],
               ),
               GestureDetector(
                 onTap: () {
+                  print(model.checkedWebsite.length);
                   print('x');
                 },
                 child: Container(

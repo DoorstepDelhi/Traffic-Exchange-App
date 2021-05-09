@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 class WebsiteViewModel extends BaseModel {
   List<Website> initData = [];
-  List<bool> checkedWebsite = [];
+  List<Website> checkedWebsite = [];
 
   TextEditingController nameController = TextEditingController();
   TextEditingController urlController = TextEditingController();
@@ -58,7 +58,7 @@ class WebsiteViewModel extends BaseModel {
       for (var res in response.data) {
         final web = websiteFromJson(res);
         initData.add(web);
-        checkedWebsite.add(false);
+        print(checkedWebsite);
       }
     } else {
       setState(ViewState.Idle);

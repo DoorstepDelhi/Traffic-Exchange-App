@@ -53,7 +53,7 @@ class _TabsWidgetState extends State<TabsWidget> {
       widget.selectedTab = tabItem;
       switch (tabItem) {
         case 0:
-          widget.currentTitle = 'My Websites';
+          widget.currentTitle = 'Surf Screen';
           widget.currentPage = SurfScreenWidget();
           break;
         case 1:
