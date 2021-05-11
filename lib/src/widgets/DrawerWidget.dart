@@ -48,7 +48,7 @@ class DrawerWidget extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed('/Tabs', arguments: 0);
+              Navigator.of(context).pushNamed('/Tabs', arguments: 1);
             },
             leading: UiIcons.web,
             title: Text(

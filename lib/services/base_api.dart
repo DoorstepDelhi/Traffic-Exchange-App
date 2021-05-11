@@ -109,6 +109,7 @@ abstract class BaseApi {
   Future<ApiResponse> patchRequest(
       String endpoint, Map<String, dynamic> data) async {
     final uri = Uri.https(_baseUrl, endpoint);
+    print(uri);
     return processResponse(await http.patch(uri,
         headers: {
           HttpHeaders.authorizationHeader: 'Token $_authToken',

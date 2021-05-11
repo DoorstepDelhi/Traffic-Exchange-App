@@ -214,25 +214,13 @@ Widget expandRow(BuildContext context, model, {Website content}) {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          padding: EdgeInsets.all(5.0),
-                          constraints: BoxConstraints(),
-                          icon: Icon(Icons.remove_red_eye),
-                          onPressed: () {
-                            print('yyyy');
-                          },
-                        ),
-                        IconButton(
-                          padding: EdgeInsets.all(5.0),
-                          constraints: BoxConstraints(),
-                          icon: Icon(Icons.pause),
-                          onPressed: () {
-                            print('yyyy');
-                          },
-                        ),
-                      ],
+                    IconButton(
+                      padding: EdgeInsets.all(5.0),
+                      constraints: BoxConstraints(),
+                      icon: Icon(Icons.pause),
+                      onPressed: () {
+                        print('yyyy');
+                      },
                     ),
                     Row(
                       children: [

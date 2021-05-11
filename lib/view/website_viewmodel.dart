@@ -33,8 +33,8 @@ class WebsiteViewModel extends BaseModel {
     print(data);
 
     setState(ViewState.Busy);
-    final response =
-        await _apiService.postRequest('/webtraffic/websites/', data);
+    final response = await _apiService.postWebsiteMethod(
+        endpoint: '/webtraffic/websites/', data: data);
     if (!response.error) {
       setState(ViewState.Idle);
       print('success');
@@ -51,7 +51,7 @@ class WebsiteViewModel extends BaseModel {
   void getWebsites(BuildContext context) async {
     setState(ViewState.Busy);
     final response =
-        await _apiService.getRequest(endpoint: '/webtraffic/websites/');
+        await _apiService.getWebsiteMethod(endpoint: '/webtraffic/websites/');
     if (!response.error) {
       setState(ViewState.Idle);
       print(response.data);
@@ -71,7 +71,7 @@ class WebsiteViewModel extends BaseModel {
   void deleteWebsite(BuildContext context, String id) async {
     print(id);
     setState(ViewState.Busy);
-    final response = await _apiService.deleteRequest(
+    final response = await _apiService.deleteWebsiteMethod(
         endpoint: '/webtraffic/websites', id: id);
     if (!response.error) {
       print('====================================');
@@ -82,16 +82,17 @@ class WebsiteViewModel extends BaseModel {
       print(response.data);
       print(response.errorMessage);
       AppConstant.showFailToast(context, response.errorMessage);
-      Navigator.of(context).pop();
+      navigationService.navigateTo('/Tabs',
+          arguments: 1, withreplacement: true);
     }
   }
 
-  void updateWebsite(BuildContext context, Website web) async {
+  void updateWebsite(BuildContext context, Website web, String id) async {
     var data = web.toJson();
     print(data);
     setState(ViewState.Busy);
-    final response =
-        await _apiService.patchRequest('/webtraffic/website', data);
+    final response = await _apiService.patchWebsiteMethod(
+        endpoint: '/webtraffic/website/$id/', data: data);
     if (!response.error) {
       print('====================================');
       setState(ViewState.Idle);
@@ -101,7 +102,8 @@ class WebsiteViewModel extends BaseModel {
       print(response.data);
       print(response.errorMessage);
       AppConstant.showFailToast(context, response.errorMessage);
-      Navigator.of(context).pop();
+      navigationService.navigateTo('/Tabs',
+          arguments: 1, withreplacement: true);
     }
   }
 
@@ -115,7 +117,7 @@ class WebsiteViewModel extends BaseModel {
     for (Website web in checkedWebsite) {
       print(web.id);
       web.name = "change";
-      updateWebsite(context, web);
+      updateWebsite(context, web, web.id);
     }
   }
 }
