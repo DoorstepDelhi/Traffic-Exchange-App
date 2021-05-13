@@ -48,6 +48,36 @@ class WebsiteViewModel extends BaseModel {
     }
   }
 
+  void editWebsite(BuildContext context, String id) async {
+    Website website = Website();
+    website.name = nameController.text;
+    website.url = urlController.text;
+    website.dailyHits = int.parse(dailyHitsController.text);
+    website.totalHits = int.parse(totalHitsController.text);
+    website.category =
+        categoryController.text != "" ? categoryController.text : 'S';
+    website.trafficSource =
+        trafficController.text != "" ? trafficController.text : 'D';
+
+    var data = website.toJson();
+    print(data);
+
+    setState(ViewState.Busy);
+    final response = await _apiService.patchWebsiteMethod(
+        endpoint: '/webtraffic/websites/$id/', data: data);
+    if (!response.error) {
+      setState(ViewState.Idle);
+      print('success');
+      navigationService.navigateTo('/Tabs',
+          arguments: 1, withreplacement: true);
+    } else {
+      setState(ViewState.Idle);
+      print(response.data);
+      print(response.errorMessage);
+      AppConstant.showFailToast(context, response.errorMessage);
+    }
+  }
+
   void getWebsites(BuildContext context) async {
     setState(ViewState.Busy);
     final response =
@@ -92,7 +122,7 @@ class WebsiteViewModel extends BaseModel {
     print(data);
     setState(ViewState.Busy);
     final response = await _apiService.patchWebsiteMethod(
-        endpoint: '/webtraffic/website/$id/', data: data);
+        endpoint: '/webtraffic/websites/$id/', data: data);
     if (!response.error) {
       print('====================================');
       setState(ViewState.Idle);
@@ -118,6 +148,34 @@ class WebsiteViewModel extends BaseModel {
       print(web.id);
       web.name = "change";
       updateWebsite(context, web, web.id);
+    }
+  }
+
+  void getOneWebsite(BuildContext context, String id) async {
+    print(id);
+    if (id == null) return;
+    setState(ViewState.Busy);
+    final response =
+        await _apiService.getRequest(endpoint: '/webtraffic/websites/$id');
+    if (!response.error) {
+      print('====================================');
+      setState(ViewState.Idle);
+      print(response.data);
+      final web = websiteFromJson(response.data);
+
+      nameController.text = web.name;
+      urlController.text = web.url;
+      dailyHitsController.text = web.dailyHits.toString();
+      totalHitsController.text = web.totalHits.toString();
+      categoryController.text = web.category;
+      trafficController.text = web.trafficSource;
+    } else {
+      setState(ViewState.Idle);
+      print(response.data);
+      print(response.errorMessage);
+      AppConstant.showFailToast(context, response.errorMessage);
+      navigationService.navigateTo('/Tabs',
+          arguments: 1, withreplacement: true);
     }
   }
 }

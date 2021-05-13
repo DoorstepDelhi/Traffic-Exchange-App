@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_ui_kit/src/models/website.dart';
+import 'package:ecommerce_app_ui_kit/src/screens/add_new_website.dart';
 import 'package:ecommerce_app_ui_kit/src/widgets/GeneralButton.dart';
 import 'package:flutter/material.dart';
 
@@ -229,7 +230,14 @@ Widget expandRow(BuildContext context, model, {Website content}) {
                           constraints: BoxConstraints(),
                           icon: Icon(Icons.edit),
                           onPressed: () {
-                            print('yyyy');
+                            print(content.id);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddWebsiteWidget(),
+                                settings: RouteSettings(arguments: content.id),
+                              ),
+                            );
                           },
                         ),
                         IconButton(
